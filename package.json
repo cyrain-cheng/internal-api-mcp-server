@@ -4,6 +4,9 @@
   "type": "module",
   "description": "MCP Server for internal API access - protocol bridge between AI tools and auth backend",
   "main": "dist/index.js",
+  "bin": {
+    "internal-api-mcp-server": "dist/index.js"
+  },
   "scripts": {
     "prepare": "tsc",
     "build": "tsc",
