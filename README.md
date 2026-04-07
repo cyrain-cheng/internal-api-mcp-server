@@ -1,5 +1,7 @@
 # internal-api-mcp-server
 
+[中文文档](./README.zh-CN.md)
+
 MCP Server for internal API access. Acts as a protocol bridge between AI tools (Kiro/Cursor) and your authentication backend via stdio transport.
 
 Handles auth login, token caching, and API proxy calls — no business logic included.
