@@ -2,7 +2,7 @@
   "name": "internal-api-mcp-server",
   "version": "1.0.0",
   "type": "module",
-  "description": "MCP Server for Giikin API - AI 工具与 mcp-auth 后端的协议桥梁",
+  "description": "MCP Server for internal API access - protocol bridge between AI tools and auth backend",
   "main": "dist/index.js",
   "scripts": {
     "prepare": "tsc",

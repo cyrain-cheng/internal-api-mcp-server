@@ -242,12 +242,12 @@ curl -H "Authorization: Bearer {token}" http://localhost:8080/api/v1/apis
 
 ### 3.0 配置 MCP Server
 
-确认 `.kiro/settings/mcp.json` 中已添加 giikin-api 配置：
+确认 `.kiro/settings/mcp.json` 中已添加 internal-api 配置：
 
 ```json
 {
   "mcpServers": {
-    "giikin-api": {
+    "internal-api": {
       "command": "node",
       "args": ["mcp-server/dist/index.js"],
       "env": {
@@ -359,13 +359,13 @@ curl -H "Authorization: Bearer {token}" http://localhost:8080/api/v1/apis
 
 ### 4.2 Token 过期
 
-登录成功后，手动编辑 `~/.giikin-mcp/token.json`，将 `expiresAt` 改为过去的时间，然后调用 `get_auth_status`。
+登录成功后，手动编辑 `~/.internal-api-mcp/token.json`，将 `expiresAt` 改为过去的时间，然后调用 `get_auth_status`。
 
 预期：返回 `{"success": true, "message": "未登录"}`
 
 ### 4.3 Token 文件损坏
 
-手动将 `~/.giikin-mcp/token.json` 内容改为 `{broken`，然后调用 `get_auth_status`。
+手动将 `~/.internal-api-mcp/token.json` 内容改为 `{broken`，然后调用 `get_auth_status`。
 
 预期：返回 `{"success": true, "message": "未登录"}`（不会抛异常）
 
@@ -386,7 +386,7 @@ curl -H "Authorization: Bearer {token}" http://localhost:8080/api/v1/apis
 登录成功后检查文件：
 
 ```bash
-cat ~/.giikin-mcp/token.json
+cat ~/.internal-api-mcp/token.json
 ```
 
 预期内容：
@@ -466,10 +466,10 @@ async function main() {
   const parts = token.split('.');
   const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
   const expiresAt = new Date(payload.exp * 1000).toISOString();
-  const dir = path.join(os.homedir(), '.giikin-mcp');
+  const dir = path.join(os.homedir(), '.internal-api-mcp');
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'token.json'), JSON.stringify({ token, expiresAt }, null, 2));
-  console.log('token saved to ~/.giikin-mcp/token.json');
+  console.log('token saved to ~/.internal-api-mcp/token.json');
 }
 main().catch(console.error);
 "

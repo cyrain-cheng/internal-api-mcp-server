@@ -5,7 +5,7 @@ import { registerApiTools } from "./tools/api.js";
 
 async function main() {
   const server = new McpServer({
-    name: "giikin-api",
+    name: "internal-api",
     version: "1.0.0",
   });
 

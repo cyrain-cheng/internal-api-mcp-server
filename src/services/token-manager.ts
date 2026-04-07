@@ -11,7 +11,7 @@ class TokenManager {
   private tokenPath: string;
 
   constructor(tokenDir?: string) {
-    const dir = tokenDir ?? path.join(os.homedir(), ".giikin-mcp");
+    const dir = tokenDir ?? path.join(os.homedir(), ".internal-api-mcp");
     this.tokenPath = path.join(dir, "token.json");
   }
 
